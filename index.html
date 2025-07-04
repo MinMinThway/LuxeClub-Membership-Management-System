@@ -33,6 +33,15 @@
               sans: ['Inter', 'sans-serif'],
               padauk: ['Padauk', 'sans-serif'],
             },
+            animation: {
+              'infinite-scroll': 'infinite-scroll 30s linear infinite',
+            },
+            keyframes: {
+              'infinite-scroll': {
+                'from': { transform: 'translateX(0)' },
+                'to': { transform: 'translateX(-50%)' },
+              }
+            }
           },
         },
       }
@@ -50,11 +59,12 @@
     "jspdf": "https://esm.sh/jspdf@2.5.1",
     "html2canvas": "https://esm.sh/html2canvas@1.4.1",
     "xlsx": "https://esm.sh/xlsx@0.18.5/xlsx.mjs",
-    "qrcode": "https://esm.sh/qrcode@1.5.3"
+    "qrcode": "https://esm.sh/qrcode@1.5.3",
+    "jspdf-autotable": "https://esm.sh/jspdf-autotable@^5.0.2"
   }
 }
 </script>
-<!-- <link rel="stylesheet" href="/index.css"> -->
+<link rel="stylesheet" href="/index.css">
 </head>
   <body class="bg-gray-100 dark:bg-brand-dark">
     <div id="root"></div>
