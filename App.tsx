@@ -22,7 +22,7 @@ import EngagementActivityReportsPage from './components/pages/EngagementActivity
 
 type Theme = 'light' | 'dark';
 
-const ArrowLeftIcon: React.FC<{className?: string}> = ({ className }) => (
+const ArrowLeftIcon: React.FC<{ className?: string }> = ({ className }) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={className}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
     </svg>
@@ -89,13 +89,13 @@ const App: React.FC = () => {
             { id: 'notifications', label: t.notifications, icon: BellIcon, page: 'notifications' as Page },
             { id: 'tier-rules', label: t.tierRules, icon: ScaleIcon, page: 'tier-rules' as Page },
         ];
-        
+
         const handleNavClick = (page: Page) => {
             setPage(page);
         };
 
         const menuNavItems = navItems.filter(item => item.page !== 'dashboard');
-            
+
         const AdminMenuGrid = () => (
             <div className="p-4">
                 <div className="grid grid-cols-4 gap-3">
@@ -113,14 +113,14 @@ const App: React.FC = () => {
                 </div>
             </div>
         );
-        
+
         const AdminProfilePage = () => (
-             <div className="p-4 sm:p-6 space-y-6">
+            <div className="p-4 sm:p-6 space-y-6">
                 <div className="bg-white dark:bg-brand-secondary p-6 rounded-lg shadow-lg">
                     <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Admin Profile</h2>
-                     <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-4">
                         <div className="w-16 h-16 rounded-full bg-brand-accent flex items-center justify-center">
-                            <UserCircleIcon className="w-10 h-10 text-brand-dark"/>
+                            <UserCircleIcon className="w-10 h-10 text-brand-dark" />
                         </div>
                         <div>
                             <p className="font-bold text-lg text-gray-900 dark:text-white">Admin User</p>
@@ -131,7 +131,7 @@ const App: React.FC = () => {
                         onClick={handleLogout}
                         className="w-full mt-8 flex items-center justify-center space-x-2 text-red-500 bg-red-500/10 p-3 rounded-lg font-bold hover:bg-red-500/20"
                     >
-                        <LogoutIcon className="w-5 h-5"/>
+                        <LogoutIcon className="w-5 h-5" />
                         <span>{t.logout}</span>
                     </button>
                 </div>
@@ -142,7 +142,12 @@ const App: React.FC = () => {
         const SidebarContent = () => (
             <>
                 <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-                    <div className="text-2xl font-bold text-brand-accent">LuxeClub</div>
+                    {/* <div className="text-2xl font-bold text-brand-accent">LuxeClub</div> */}
+                    <img
+                        src="/images/WhiteLogo.png"
+                        alt="Logo"
+                        className="h-12 w-12 sm:h-16 sm:w-16 object-contain border-2 border-brand-accent rounded-lg shadow-md"
+                    />
                 </div>
                 <nav className="flex-grow p-4">
                     <ul>
@@ -172,16 +177,16 @@ const App: React.FC = () => {
         );
 
         type AdminNavTab = 'dashboard' | 'menu' | 'profile';
-        const AdminNavButton: React.FC<{label: string; icon: React.ElementType; tabName: AdminNavTab;}> = ({ label, icon: Icon, tabName }) => (
+        const AdminNavButton: React.FC<{ label: string; icon: React.ElementType; tabName: AdminNavTab; }> = ({ label, icon: Icon, tabName }) => (
             <button
-              onClick={() => setAdminMobileTab(tabName)}
-              className="flex flex-col items-center justify-center w-1/3 h-full"
-              aria-label={label}
+                onClick={() => setAdminMobileTab(tabName)}
+                className="flex flex-col items-center justify-center w-1/3 h-full"
+                aria-label={label}
             >
-              <Icon className={`w-6 h-6 mb-1 transition-colors ${adminMobileTab === tabName ? 'text-brand-accent' : 'text-gray-500 dark:text-gray-400'}`} />
-              <span className={`text-xs font-medium transition-colors ${adminMobileTab === tabName ? 'text-brand-accent' : 'text-gray-600 dark:text-gray-300'}`}>
-                {label}
-              </span>
+                <Icon className={`w-6 h-6 mb-1 transition-colors ${adminMobileTab === tabName ? 'text-brand-accent' : 'text-gray-500 dark:text-gray-400'}`} />
+                <span className={`text-xs font-medium transition-colors ${adminMobileTab === tabName ? 'text-brand-accent' : 'text-gray-600 dark:text-gray-300'}`}>
+                    {label}
+                </span>
             </button>
         );
 
@@ -189,12 +194,12 @@ const App: React.FC = () => {
             <div className={`min-h-screen flex text-gray-800 dark:text-white ${language === 'my' ? 'font-padauk' : 'font-sans'}`}>
                 {/* Sidebar for Desktop */}
                 <aside className="hidden w-64 flex-col bg-white dark:bg-brand-secondary md:flex">
-                   <SidebarContent />
+                    <SidebarContent />
                 </aside>
 
                 <main className="flex-1 flex flex-col bg-gray-100 dark:bg-brand-dark">
                     <header className="bg-white dark:bg-brand-secondary p-4 flex justify-between items-center space-x-4 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-20">
-                         <div className="flex items-center min-w-0">
+                        <div className="flex items-center min-w-0">
                             {/* Mobile: Back button or Tab Title */}
                             <div className="md:hidden">
                                 {page !== 'dashboard' ? (
@@ -211,19 +216,19 @@ const App: React.FC = () => {
                                 {navItems.find(i => i.page === page)?.label || 'Dashboard'}
                             </h1>
                         </div>
-                        
+
                         <div className="flex items-center space-x-2 sm:space-x-4">
                             <ThemeToggle theme={theme} setTheme={setTheme} />
                             <LanguageToggle language={language} setLanguage={setLanguage} />
                         </div>
                     </header>
-                    
+
                     <div className="flex-1 overflow-y-auto pb-16 md:pb-0">
                         {/* Desktop View always renders children from App */}
                         <div className="hidden md:block h-full">
                             {children}
                         </div>
-                        
+
                         {/* Mobile View logic */}
                         <div className="md:hidden h-full">
                             {page === 'dashboard' ? (
@@ -242,19 +247,19 @@ const App: React.FC = () => {
                     {/* Mobile Bottom Nav */}
                     {page === 'dashboard' && (
                         <div className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-white/90 dark:bg-brand-secondary/90 backdrop-blur-sm border-t border-gray-200 dark:border-brand-light shadow-[0_-4px_15px_rgba(0,0,0,0.1)] z-40">
-                          <div className="flex justify-around items-center h-full">
-                            <AdminNavButton label={t.dashboard} icon={DashboardIcon} tabName="dashboard" />
-                            <AdminNavButton label={t.menu} icon={GridIcon} tabName="menu" />
-                            <AdminNavButton label={t.profile} icon={UserCircleIcon} tabName="profile" />
-                          </div>
+                            <div className="flex justify-around items-center h-full">
+                                <AdminNavButton label={t.dashboard} icon={DashboardIcon} tabName="dashboard" />
+                                <AdminNavButton label={t.menu} icon={GridIcon} tabName="menu" />
+                                <AdminNavButton label={t.profile} icon={UserCircleIcon} tabName="profile" />
+                            </div>
                         </div>
                     )}
                 </main>
             </div>
         );
     };
-    
-    const MemberLayout: React.FC<{children: React.ReactNode}> = ({children}) => {
+
+    const MemberLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         return (
             <div className={`min-h-screen bg-gray-100 dark:bg-brand-dark text-gray-800 dark:text-white ${language === 'my' ? 'font-padauk' : 'font-sans'}`}>
                 {children}
@@ -315,11 +320,11 @@ const App: React.FC = () => {
         if (userRole === 'member' && page === 'member-view') {
             return (
                 <MemberLayout>
-                    <MemberView 
-                        memberId="MEM002" 
-                        onLogout={handleLogout} 
-                        language={language} 
-                        theme={theme} 
+                    <MemberView
+                        memberId="MEM002"
+                        onLogout={handleLogout}
+                        language={language}
+                        theme={theme}
                         setTheme={setTheme}
                         setLanguage={setLanguage}
                     />
