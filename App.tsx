@@ -142,12 +142,12 @@ const App: React.FC = () => {
         const SidebarContent = () => (
             <>
                 <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-                    {/* <div className="text-2xl font-bold text-brand-accent">LuxeClub</div> */}
-                    <img
+                    <div className="text-2xl font-bold text-brand-accent">Hello</div>
+                    {/* <img
                         src="/images/WhiteLogo.png"
                         alt="Logo"
                         className="h-12 w-12 sm:h-16 sm:w-16 object-contain border-2 border-brand-accent rounded-lg shadow-md"
-                    />
+                    /> */}
                 </div>
                 <nav className="flex-grow p-4">
                     <ul>
@@ -267,7 +267,7 @@ const App: React.FC = () => {
         )
     }
 
-    
+
     const renderPage = () => {
         if (page === 'login') {
             return <LoginPage onLogin={handleLogin} language={language} setLanguage={setLanguage} theme={theme} setTheme={setTheme} />;
