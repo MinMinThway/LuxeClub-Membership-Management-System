@@ -267,6 +267,7 @@ const App: React.FC = () => {
         )
     }
 
+    
     const renderPage = () => {
         if (page === 'login') {
             return <LoginPage onLogin={handleLogin} language={language} setLanguage={setLanguage} theme={theme} setTheme={setTheme} />;
